@@ -1,0 +1,98 @@
+[
+    {
+        "student_id": "Rania",
+        "student_first_name": "Aisha",
+        "student_last_name": "S001",
+        "faculty": "FETSA",
+        "contact": "0705409062",
+        "registration_number": "R))!",
+        "year_of_study": "Year 2",
+        "gender": "Female",
+        "course": "BIT",
+        "email": " AishaS001@iuiu.ac"
+    },
+    {
+        "student_id": "S001",
+        "student_first_name": "Rania",
+        "student_last_name": "Aisha",
+        "faculty": "FETSA",
+        "contact": "0705409062",
+        "registration_number": "R001",
+        "year_of_study": "Year 2",
+        "gender": "Female",
+        "course": "BIT",
+        "email": " RaniaAisha@iuiu.ac"
+    },
+    {
+        "student_id": "S))!",
+        "student_first_name": "Rania",
+        "student_last_name": "Aisha",
+        "faculty": "FETSA",
+        "contact": "0705409062",
+        "registration_number": "R001",
+        "year_of_study": "Year 2",
+        "gender": "Female",
+        "course": "BIT",
+        "email": " RaniaAisha@iuiu.ac"
+    },
+    {
+        "student_id": "S002",
+        "student_first_name": "Salma",
+        "student_last_name": "Nalunks",
+        "faculty": "FETSA",
+        "contact": "0976543",
+        "registration_number": "R002",
+        "year_of_study": "Year 2",
+        "gender": "Female",
+        "course": "BIT",
+        "email": " SalmaNalunks@iuiu.ac"
+    },
+    {
+        "student_id": "S001",
+        "student_first_name": "Rania",
+        "student_last_name": "Aisha",
+        "faculty": "FETSA",
+        "contact": "0705409062",
+        "registration_number": "R001",
+        "year_of_study": "Year 2",
+        "gender": "Female",
+        "course": "BIT",
+        "email": " RaniaAisha@iuiu.ac"
+    },
+    {
+        "student_id": "S002",
+        "student_first_name": "Salma",
+        "student_last_name": "Nlunks",
+        "faculty": "FETSA",
+        "contact": "07065432",
+        "registration_number": "R002",
+        "year_of_study": "Year 2",
+        "gender": "Female",
+        "course": "BIT",
+        "email": " SalmaNlunks@iuiu.ac"
+    },
+    {
+        "student_id": "",
+        "student_first_name": "",
+        "student_last_name": "",
+        "faculty": "",
+        "contact": "",
+        "registration_number": "",
+        "year_of_study": "",
+        "gender": "",
+        "course": "",
+        "email": " @iuiu.ac"
+    },
+    {
+        "student_id": "",
+        "student_first_name": "",
+        "student_last_name": "",
+        "faculty": "",
+        "contact": "",
+        "registration_number": "",
+        "year_of_study": "",
+        "gender": "",
+        "course": "",
+        "email": " @iuiu.ac"
+    }
+]

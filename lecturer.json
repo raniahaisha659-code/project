@@ -1,0 +1,32 @@
+[
+    {
+        "lecturer_id": "L001",
+        "lecturer_first_name": "Rania",
+        "lecturer_last_name": "Aisha",
+        "faculty": "FETSA",
+        "gender": "Female",
+        "contact": "0798543",
+        "department": "Science",
+        "email ": " RaniaAisha@iuiu.ac"
+    },
+    {
+        "lecturer_id": "Salma",
+        "lecturer_first_name": "nakunks",
+        "lecturer_last_name": "salama",
+        "faculty": "FETSA",
+        "gender": "Female",
+        "contact": "0987654",
+        "department": "Science",
+        "email ": " nakunkssalama@iuiu.ac"
+    },
+    {
+        "lecturer_id": "L001",
+        "lecturer_first_name": "Masanso",
+        "lecturer_last_name": "Malik",
+        "faculty": "FETSA",
+        "gender": "Male",
+        "contact": "078438483",
+        "department": "Science",
+        "email ": " MasansoMalik@iuiu.ac"
+    }
+]
