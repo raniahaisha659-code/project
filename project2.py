@@ -180,6 +180,6 @@ class LecturerAttendance:
         
     
 
-print ("helo")
+
  
  
