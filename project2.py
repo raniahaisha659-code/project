@@ -157,26 +157,7 @@ class Studysession:
 
     
 
-class LecturerAttendance:
-    def __init__(self, id ,date,  lecturer_id):
-        self.id = id
-        self.date = date
-        self.__status = "Present"
-        self.lecturer_id = lecturer_id
-        
-    def get_status(self):
-        return self.__status
-    
-    def update_status(self, value):
-        if value in ["Present", "Absent"]:
-            self.__status = value
-        else:
-            print("Invalid option")
-        
-          
-        
-    def __str__(self):
-        return f"{self.id} -> {self.date} -> {self.__status} -> {self.lecturer_id}"
+
         
     
 
