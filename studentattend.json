@@ -1,1 +1,9 @@
-[]
+[
+    {
+        "studentattendance": "S001",
+        "date": "",
+        "student_id": "",
+        "timetable": "",
+        "status": "Present"
+    }
+]

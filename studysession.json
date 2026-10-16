@@ -16,5 +16,9 @@
         "academic_year": "2",
         "semester": "\"",
         "status": "Present"
-    }
-]
+    },
+    {
+        "study_session_id": "s001",
+        "academic_year": "",
+        "semester": "2",
+        "status": 

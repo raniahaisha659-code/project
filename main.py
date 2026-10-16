@@ -14,7 +14,7 @@ LecturerAttendance_list = []
 
 
 while True:    
-    print("\n1.Course registration\n2.Student Registration\n3.Lecturer Registration\n4.Add courseunits\n5.Timetable\n6.Record study session\n7.Student Attendance\n8.Lecturer Attendance\n9.Exit\n")
+    print("\n1.Course registration\n2.Student Registration\n3.Lecturer Registration\n4.Add courseunits\n5.Timetable\n6.Student Attendance \n7.Student Attendance\n8.Lecturer Attendance\n9.Exit\n")
     choice = input("Enter your choice(1-9): ")
     
     if choice == "1":
@@ -220,7 +220,7 @@ while True:
                 "date": studentattendance.date,
                 "student_id": studentattendance.student_id,
                 "timetable": studentattendance.timetable,
-                "status": studentattendance.get_status()
+                "status": studentattendance.get_status
             }
             
             with open ("studentattend.json" , "r")as doc:
@@ -235,9 +235,37 @@ while True:
                 continue
             else:
                 break   
-            
-            
+
     elif choice == "7":
+            lecturerattendance_id = input("Enter lecturer attendance id: ")
+            date = input("Enter the date(dd/mm/yyyy): ")
+            lecturer_id = input ("Enter the lecturer id : ")
+            
+            lecturerattendance = LecturerAttendance(lecturerattendance_id, date, lecturer_id)
+            
+            new_lecturerattendance = {
+                "lecturerattendance_id" : lecturerattendance.id,
+                "date" : lecturerattendance.date,
+                "lecturer_id" : lecturerattendance.lecturer_id,
+                "status": lecturerattendance.get_status()
+            }
+            
+            with open("lecturerattend.json", "r")as doc:
+                LecturerAttendance_list = json.load(doc)
+                
+            with open("lecturerattend", "w")as doc:
+                LecturerAttendance_list.append(new_lecturerattendance)
+                json.dump( LecturerAttendance_list, doc, indent = 4)
+                
+                add_lecturerattendance = input("Do you want to add more lecturer attendances(Y/N): ")
+                
+                if add_lecturerattendance == "Y":
+                    continue
+                else:
+                    break
+            
+            
+    elif choice == "8":
         while True:
             
             study_session_id = input("Enter study session-id: ")
@@ -251,7 +279,7 @@ while True:
                 "study_session_id": studysession.study_session_id,
                 "academic_year": studysession.academic_year,
                 "semester": studysession.semester,
-                "status": studysession.get_status()
+                
                 
             }
             with open ("studysession.json", "r")as doc:
@@ -267,36 +295,12 @@ while True:
             else:
                 break
             
-    elif choice == "8":
-        lecturerattendance_id = input("Enter lecturer attendance id: ")
-        date = input("Enter the date(dd/mm/yyyy): ")
-        lecturer_id = input ("Enter the lecturer id : ")
-        
-        lecturerattendance = LecturerAttendance(lecturerattendance_id, date, lecturer_id)
-        
-        new_lecturerattendance = {
-            "lecturerattendance_id" : lecturerattendance.id,
-            "date" : lecturerattendance.date,
-            "lecturer_id" : lecturerattendance.lecturer_id,
-            "status": lecturerattendance.get_status()
-        }
-        
-        with open("lecturerattend.json", "r")as doc:
-            LecturerAttendance_list = json.load(doc)
-            
-        with open("lecturerattend", "w")as doc:
-            LecturerAttendance_list.append(new_lecturerattendance)
-            json.dump( LecturerAttendance_list, doc, indent = 4)
-            
-            add_lecturerattendance = input("Do you want to add more lecturer attendances(Y/N): ")
-            
-            if add_lecturerattendance == "Y":
-                continue
-            else:
-                break
+    
     else:
         print("You have exited the program")
         break
+    
+                
         
 
         

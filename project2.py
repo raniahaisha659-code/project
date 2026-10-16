@@ -1,14 +1,23 @@
+from abc import ABC,abstractmethod
 class Course:
+    total_courses = 0
+
     def __init__(self,course_id ,course_name, course_code, faculty):
         self.course_id = course_id
         self.course_name = course_name
         self.course_code = course_code
         self.faculty = faculty
+        
+        Course.total_courses += 1
+        
+    
 
     def __str__(self):
         return f"{self.course_id} -{self.course_name} - {self.course_code} -({self.faculty})"
 
 class Student:
+    
+    
     def __init__(self, student_id, first_name, last_name, faculty, contact, reg_no, year_of_study, gender, course):
     
         self.student_id = student_id
@@ -22,6 +31,8 @@ class Student:
         self.gender = gender
         self.course = course
 
+    
+    
     def get_email(self):
         self.email = f" {self.first_name}{self.last_name}@iuiu.ac"
         return self.email
@@ -83,7 +94,7 @@ class Timetable:
             f"{self.start_time} - {self.end_time}"
         )
 
-class Attendance:
+class Attendance(ABC):
     def __init__(self,id, date, ):
         self.id = id
         self.date = date
@@ -91,45 +102,58 @@ class Attendance:
     def __str__(self):
         return f"{self.id} -> {self.date}"
     
+    @abstractmethod
+    def change_status(self):
+        pass
+    
+    def record_status(self):
+        pass
+    
+    @property
+    def get_status(self):
+        return self._status
+    
+    @property
+    def record_status(self, value):
+        if value in ["Present","Absent"]:
+                    
+            self._status = value
+        else:
+            print("Invalid option")
+                
+    
 class StudentAttendance(Attendance):
+    
     def __init__(self, id, date,  student_id, timetable):
         super(). __init__(id , date)
-        self.__status = "Present"
+        self._status = "Present"
         self.student_id = student_id
         self.timetable = timetable
+         
     
-    def get_status(self):
-        return self.__status
+    def change_status(self,value):
+        
+        return self.record_status (value)
     
-    def update_status(self,value):
-            if value in ["Present","Absent"]:
-                
-                self.__status = value
-            else:
-                print("Invalid option")
-                
+    
+            
+            
     def __str__(self):
-        return f"{self.id} | {self.date} | {self.status} | {self.student_id}"
+        return f"{self.id} | {self.date} | {self._status} | {self.student_id}"
     
 class LecturerAttendance(Attendance):
     def __init__(self, id ,date,  lecturer_id):
         super(). __init__(id, date)
-        self.__status = "Present"
+        self._status = "Present"
         self.lecturer_id = lecturer_id
         
-    def get_status(self):
-        return self.__status
-    
-    def update_status(self, value):
-        if value in ["Present", "Absent"]:
-            self.__status = value
-        else:
-            print("Invalid option")
-        
-          
+    def change_status(self,value):
+            
+        return self.record_status(value)
+            
         
     def __str__(self):
-        return f"{self.id} -> {self.date} -> {self.__status} -> {self.lecturer_id}"
+        return f"{self.id} -> {self.date} -> {self._status} -> {self.lecturer_id}"
         
     
 
@@ -138,48 +162,16 @@ class Studysession:
         self.study_session_id = study_session_id
         self.academic_year = academic_year
         self.semester = semester
-        self.__status = "Present"
 
-    
-        
 
-    def get_status(self):
-        return self.__status
-    
-    def update_status(self,value):
-        if value in ["Present", "Absent"]:
-            self.__status = value
-        else:
-            print("Invalid option")
 
     def __str__(self):
-        return f"{self.academic_year} - {self.semester} - {self.get_status()}"
+        return f"{self.academic_year} - {self.semester} - {self._status}"
 
     
 
-class LecturerAttendance:
-    def __init__(self, id ,date,  lecturer_id):
-        self.id = id
-        self.date = date
-        self.__status = "Present"
-        self.lecturer_id = lecturer_id
-        
-    def get_status(self):
-        return self.__status
-    
-    def update_status(self, value):
-        if value in ["Present", "Absent"]:
-            self.__status = value
-        else:
-            print("Invalid option")
-        
-          
-        
-    def __str__(self):
-        return f"{self.id} -> {self.date} -> {self.__status} -> {self.lecturer_id}"
-        
-    
+   
 
-
+ 
  
  
