@@ -12,20 +12,14 @@ class Course:
         self.course_code = course_code
         self.faculty = faculty
         
-    #def add_course_units(self, course_unit):
-         #   self.courseunits.append(course_unit)
+    
             
     @classmethod
     def generate_id(cls):
         al = "C-"
         cls.course +=1
         return al + str(cls.course)
-    #@staticmethod
-    #def get_courseunits(self):
-     #       details = ""
-      #      for course_unit in self.courseunits:
-       #         details += f" {self.course_unit}\n"
-        #    return details
+    
     
     def __str__(self):
         return f"{self.course_id} -{self.course_name} - {self.course_code} -({self.faculty})"
