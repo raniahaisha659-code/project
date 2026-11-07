@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "courseunit_id": "CU-1",
+        "courseunit_name": "Programming",
+        "courseunit_code": "c001",
+        "credit_units": "BIT"
+    },
+    {
+        "courseunit_id": "CU-1",
+        "courseunit_name": "Rania",
+        "courseunit_code": "C001",
+        "credit_units": "4"
+    }
+]

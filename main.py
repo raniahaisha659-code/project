@@ -14,12 +14,12 @@ LecturerAttendance_list = []
 
 
 while True:    
-    print("\n1.Course registration\n2.Student Registration\n3.Lecturer Registration\n4.Add courseunits\n5.Timetable\n6.Student Attendance \n7.Student Attendance\n8.Lecturer Attendance\n9.Exit\n")
+    print("\n1.Course registration\n 2.Add course units\n3.Student Registration\n4.Lecturer Registration\n5.Timetable\n6.Study Session \n7.Student Attendance\n8.Lecturer Attendance\n9.Exit\n")
     choice = input("Enter your choice(1-9): ")
     
     if choice == "1":
         while True:
-            course_id = input("Enter course id: ")
+            course_id = Course.generate_id()
             course_name = input("Enter course name: ")
             course_code = input("Enter course code: ")
             faculty = input("Enter faculty: ")
@@ -44,23 +44,53 @@ while True:
                 continue
             else:
                 break
-    
-    
     elif choice == "2":
+            while True:
+                
+                courseunit_id = CourseUnit.generate_id()
+                courseunit_name = input("Enter course unit name : ")
+                courseunit_code = input("Enter course unit code: ")
+                credit_units = input("Enter credit units: ")
+             #instance
+                
+                courseunit = CourseUnit(courseunit_id, courseunit_name, courseunit_code, credit_units)
+                
+                new_courseunit = {
+                    "courseunit_id": courseunit.courseunit_id,
+                    "courseunit_name": courseunit.courseunit_name,
+                    "courseunit_code": courseunit.courseunit_code,
+                    "credit_units": courseunit.credit_units
+                }
+                
+                with open ("courseunit.json", "r") as doc:
+                   Courseunit_list = json.load(doc)
+                   
+                with open("courseunit.json", "w") as doc:
+                    Courseunit_list.append(new_courseunit)
+                    json.dump(Courseunit_list, doc, indent = 4)
+                    
+                add_courseunit = input("Do you have more coursunits to add(Y/N): ")
+                if add_courseunit == "Y":
+                    continue
+                else:
+                    break
+    
+    elif choice == "3":
         while True:
     
-            student_id = input("enter student id: ")
+            my_course = Course("C1010", "computer science", "BSCS", "Faculty of Science")
+                        
+            student_id = Student.generate_id()
             student_first_name = input("Enter student's first name: ")
             student_last_name = input("Enter student's last name : ")
-            faculty = input("Enter faculty : ")
             contact = input("Enter student contact number: ")
             registration_number = input("Enter student registration number : ")
             year_of_study = input("Enter year of study: ")
             gender = input("Enter student gender: ")
-            course = input("Enter the student's course: ")
+            
             
         #instance
-            student = Student(  student_id, student_first_name, student_last_name,faculty, contact, registration_number, year_of_study, gender , course) 
+            student = Student(  student_id, student_first_name, student_last_name, contact, registration_number, year_of_study, gender , my_course) 
                                
             
             
@@ -68,13 +98,12 @@ while True:
                 "student_id" : student.student_id,
                 "student_first_name" : student.first_name,
                 "student_last_name" : student.last_name,
-                "faculty" : student.faculty,
                 "contact": student.contact,
                 "registration_number" : student.reg_no,
                 "year_of_study" : student.year_of_study,
                 "gender": student.gender,
-                "course": student.course,
-                "email": student.get_email()
+                "email": student.get_email(),
+                "course": student.course.__dict__
             }
 
 
@@ -97,10 +126,10 @@ while True:
                 break
              
         
-    elif choice == "3":
+    elif choice == "4":
         
         while True:
-            lecturer_id = input("Enter Lecturer's id number: ")
+            lecturer_id = Lecturer.generate_id()
             lecturer_first_name = input("Enter Lecturer's first name: ")
             lecturer_last_name = input("Enter lecturer's last name: ")
             faculty = input("Enter the faculty: ")
@@ -138,10 +167,10 @@ while True:
             else:
                 break
     
-    elif choice == "4":
+    elif choice == "5":
         while True:
             
-            courseunit_id = input("Enter course unit id number : ")
+            courseunit_id = CourseUnit.generate_id()
             courseunit_name = input("Enter course unit name : ")
             courseunit_code = input("Enter course unit code: ")
             course = input("Enter course: ")
@@ -171,9 +200,9 @@ while True:
             else:
                 break
             
-    elif choice == "5":
+    elif choice == "6":
         while True:
-            session = input("Enter session: ")
+            session = Timetable.generate_id()
             day = input("Enter day: ")
             course_unit = input("Enter course unit: ")
             lecturer = input("Enter lecturer: ")
@@ -205,22 +234,23 @@ while True:
             else:
                 break
             
-    elif choice == "6":
+    elif choice == "7":
         while True:
             
-            studentattendance_id = input("Enter student attendance id: ")
+            attendance_id = StudentAttendance.generate_id()
             date = input("Enter the date(dd/mm/yyyy): ")
-            student_id = input("Enter the student id number: ")
+            student_id = input("Enter student id (s-000): ")
             timetable = input("Enter timetable : ")
             
-            studentattendance = StudentAttendance(studentattendance_id, date, student_id, timetable)
+            
+            studentattendance = StudentAttendance(attendance_id, date, student_id, timetable)
             
             new_studentattendance ={
                 "studentattendance": studentattendance.id,
                 "date": studentattendance.date,
                 "student_id": studentattendance.student_id,
                 "timetable": studentattendance.timetable,
-                "status": studentattendance.get_status
+                "status": studentattendance.get_status(),
             }
             
             with open ("studentattend.json" , "r")as doc:
@@ -236,18 +266,19 @@ while True:
             else:
                 break   
 
-    elif choice == "7":
-            lecturerattendance_id = input("Enter lecturer attendance id: ")
+    elif choice == "8":
+            lecturerattendance_id = LecturerAttendance.generate_id()
             date = input("Enter the date(dd/mm/yyyy): ")
             lecturer_id = input ("Enter the lecturer id : ")
+            status = input("Enter status: ")
             
-            lecturerattendance = LecturerAttendance(lecturerattendance_id, date, lecturer_id)
+            lecturerattendance = LecturerAttendance(lecturerattendance_id, date, lecturer_id, status)
             
             new_lecturerattendance = {
                 "lecturerattendance_id" : lecturerattendance.id,
                 "date" : lecturerattendance.date,
                 "lecturer_id" : lecturerattendance.lecturer_id,
-                "status": lecturerattendance.get_status()
+                "status": lecturerattendance.get_status
             }
             
             with open("lecturerattend.json", "r")as doc:
@@ -265,10 +296,10 @@ while True:
                     break
             
             
-    elif choice == "8":
+    elif choice == "9":
         while True:
             
-            study_session_id = input("Enter study session-id: ")
+            study_session_id = Studysession.generate_id()
             academic_year = input("Enter the academic year: ")
             semester = input("Enter the semester: ")
             
